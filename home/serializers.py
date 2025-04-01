@@ -23,3 +23,14 @@ class StudentSerializer(serializers.ModelSerializer):
         
 
         return data
+    
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+class BookSerializer(serializers.ModelSerializer):
+    category = CategorySerializer()
+    class Meta:
+        model = Book
+        fields = '__all__'
