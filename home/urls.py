@@ -21,5 +21,7 @@ from .views import *
 urlpatterns = [
     
     path('',home),
-    path('post_student/',post_student)
+    path('post_student/',post_student),
+    path('update-student/<id>/', update_student),
+    path('delete-student/<id>/', delete_student)
 ]
