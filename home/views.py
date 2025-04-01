@@ -16,4 +16,11 @@ def home(request):
 def post_student(request):
     data = request.data
     print(data)
-    return Response({'status': 200, 'payload': data, 'message':'you sent'})
+    serializer = StudentSerializer(data = request.data)
+
+    if not serializer.is_valid():
+        print(serializer.errors)
+        return Response({'status': 403, 'errors':serializer.errors, 'message':'Something went wrong'})
+    
+    serializer.save()
+    return Response({'status': 200, 'payload': data, 'message':'your data  sent'})
